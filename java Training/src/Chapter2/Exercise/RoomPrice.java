@@ -10,6 +10,10 @@ import static java.lang.Character.toLowerCase;
  */
 public class RoomPrice
 {
+    public static double QUEEN_BED_PRICE = 125;
+    public static double KING_BED_PRICE = 139;
+    public static double SUIT_WITH_KING_PULLOUT_PRICE = 165;
+
     public static String ChooseBedType()
     {
         Scanner sc = new Scanner(System.in);
@@ -56,9 +60,7 @@ public class RoomPrice
     }
     public static void main(String[] args)
     {
-        double QUEEN_BED_PRICE = 125;
-        double KING_BED_PRICE = 139;
-        double SUIT_WITH_KING_PULLOUT_PRICE = 165;
+
         double totalCost = 0;
         String bedType = ChooseBedType();
         int roomType = ChooseRoomType();
