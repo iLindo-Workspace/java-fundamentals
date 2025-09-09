@@ -1,4 +1,4 @@
-package Chapter1.SelectionStructures;
+package Chapter2.SelectionStructures;
 
 /**
  * @author Lindokuhle Makanda
