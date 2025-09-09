@@ -13,6 +13,8 @@ public class RetirementGoal
         //Declare
         int numOfYearsUntilRetirement;
         double amountTheUserCanSave;
+        final double ANNUAL_INTEREST = 0.10;
+        double totalSavings = 0;
         Scanner sc = new Scanner(System.in);
 
         do{
@@ -42,12 +44,18 @@ public class RetirementGoal
         }while(numOfYearsUntilRetirement == 0 && amountTheUserCanSave == 0);
 
 
+        for (int i = 1; i <= numOfYearsUntilRetirement ; i++)
+        {
+            totalSavings = (totalSavings + amountTheUserCanSave) * (1 + ANNUAL_INTEREST);
+        }
+
+
         System.out.println("\n\nRetirement Calculations:\n===============================\n" +
                           String.format("""
                                   Years: %d
                                   Amount you can save: R%.2f
                                   
                                   Total Retirement Money: R%.2f
-                                  """, numOfYearsUntilRetirement, amountTheUserCanSave , amountTheUserCanSave * numOfYearsUntilRetirement));
+                                  """, numOfYearsUntilRetirement, amountTheUserCanSave , totalSavings));
     }
 }
