@@ -43,19 +43,27 @@ public class RetirementGoal
                 }
         }while(numOfYearsUntilRetirement == 0 && amountTheUserCanSave == 0);
 
-
-        for (int i = 1; i <= numOfYearsUntilRetirement ; i++)
+        double initialAnnualMoney = amountTheUserCanSave;
+        for (int i = 1; i <= numOfYearsUntilRetirement; i++)
         {
-            totalSavings = (totalSavings + amountTheUserCanSave) * (1 + ANNUAL_INTEREST);
+
+            System.out.println("Year " + i + " - R" + amountTheUserCanSave);
+            if(i != 5){
+                amountTheUserCanSave = amountTheUserCanSave + (amountTheUserCanSave * ANNUAL_INTEREST);
+            }
+            //totalSavings +=  amountTheUserCanSave;
+
+
+
         }
 
 
         System.out.println("\n\nRetirement Calculations:\n===============================\n" +
                           String.format("""
                                   Years: %d
-                                  Amount you can save: R%.2f
-                                  
+                                  Amount you want to save per annual: R%.2f
+
                                   Total Retirement Money: R%.2f
-                                  """, numOfYearsUntilRetirement, amountTheUserCanSave , totalSavings));
+                                  """, numOfYearsUntilRetirement, initialAnnualMoney , amountTheUserCanSave));
     }
 }
