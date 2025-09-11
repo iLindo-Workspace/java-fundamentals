@@ -71,11 +71,15 @@ public class DistanceFromAverage
             //Checking if it is 0 or contains letters
             if(number.equals("0") && count == 0){
                 System.err.println("""
-                                    You provided 0 which STOPS the application on the FIRST prompt.
+                                    
+                                    You provided 0 which as a first number which is not allowes.
+                                    
+                                    
                                     """);
-                System.out.println("\n\nBYE!!!");
-                System.exit(0);
-            }else if(!number.matches("\\d+")){
+                continue;
+            }
+
+            if(!number.matches("\\d+")){
                 System.out.println("Please enter digits only");
                 continue;
             }

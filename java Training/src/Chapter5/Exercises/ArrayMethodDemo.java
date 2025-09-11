@@ -9,12 +9,12 @@ import java.util.Scanner;
  */
 public class ArrayMethodDemo
 {
+    public static int[] numbers = new int[8];
     public static void main(String[] args)
     {
         int option = 0;
         int limit = 0;
-        int [] arrNumbers = new int[8];
-        arrNumbers = getArrayNumbers();
+        numbers = getArrayNumbers();
         String carryOn = "";
         Scanner input = new Scanner(System.in);
 
@@ -22,11 +22,11 @@ public class ArrayMethodDemo
         {
             option = getOption();
             if(option == 1){
-                displayAllValues(arrNumbers);
+                displayAllValues();
             }else if(option == 2){
-                displayAllValuesInReverse(arrNumbers);
+                displayAllValuesInReverse();
             } else if (option == 3) {
-                displaySumOfArrayElements(arrNumbers);
+                displaySumOfArrayElements();
             } else if (option == 4) {
                 do{
                     System.out.print("Please enter your limit number: ");
@@ -40,9 +40,9 @@ public class ArrayMethodDemo
 
                 limit = input.nextInt();
                 input.nextLine();
-                displayWithLimitingArgument(arrNumbers, limit);
+                displayWithLimitingArgument(limit);
             } else if (option == 5) {
-                valuesAboveAverage(arrNumbers);
+                valuesAboveAverage();
             }
 
             System.out.print("Do you want to check other options \"y\" for Yes or any keystroke: ");
@@ -147,7 +147,7 @@ public class ArrayMethodDemo
         return input.nextLine();
     }
     //Display all ArrayValues: Option (1)
-    public static void displayAllValues(int[] numbers)
+    public static void displayAllValues()
     {
         int count = 1;
         System.out.print("Your Numbers are: [");
@@ -165,7 +165,7 @@ public class ArrayMethodDemo
     }
 
     //Display all integers in reverse: Option (2)
-    public static void displayAllValuesInReverse(int[] numbers)
+    public static void displayAllValuesInReverse()
     {
         System.out.print("\n\nIn Reverse: [");
         for(int i = numbers.length - 1; i >= 0; i--)
@@ -180,13 +180,13 @@ public class ArrayMethodDemo
     }
 
     //Displaying the sum of the elements in the Array: Option (3)
-    public static void displaySumOfArrayElements(int[] numbers)
+    public static void displaySumOfArrayElements()
     {
         System.out.println("\n\nSum of Array Elements: " + Arrays.stream(numbers).sum() + "\n");
     }
 
     //Display all values less than the limiting argument: Option (4)
-    public static void displayWithLimitingArgument(int[] numbers, int limit)
+    public static void displayWithLimitingArgument(int limit)
     {
        boolean isFirstNum = true;
 
@@ -207,9 +207,15 @@ public class ArrayMethodDemo
     }
 
     //Displaying values that are higher than the average user numbers: Option (5)
-    public static void valuesAboveAverage(int[] numbers)
+    public static void valuesAboveAverage()
     {
-        double arrAverage = Arrays.stream(numbers).average().getAsDouble();
+        double sum = 0;
+        double arrAverage = 0;
+
+        for(int num : numbers){
+            sum += num;
+        }
+        arrAverage = sum / numbers.length;
         //Displaying the average
         System.out.println(String.format("""
                 Average of your collection: %.2f
@@ -225,7 +231,7 @@ public class ArrayMethodDemo
             {
                 if(!isFirstNum)
                 {
-                    System.out.println(", ");
+                    System.out.print(", ");
                 }
                 System.out.print(num);
                 isFirstNum = false;
